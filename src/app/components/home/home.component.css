@@ -1,0 +1,60 @@
+.nav-div {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 40px;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid lightgray 
+}
+
+.heading {
+    text-align: center;
+    color: gray;
+    font-family: "Pompiere";
+    margin-top: 20px;
+}
+
+.table {
+    width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.edit-button {
+    border: none;
+    padding: 5px 20px;
+    color: white;
+    background: #24A0ED;
+    border-radius: 10px;
+}
+
+.delete-button {
+    border: none;
+    padding: 5px 20px;
+    color: white;
+    background: #ff0000;
+    border-radius: 10px;
+}
+
+.view-button {
+    border: none;
+    padding: 5px 20px;
+    color: white;
+    background: #f9e076;
+    border-radius: 10px;
+}
+
+.add-product-button {
+    border: none;
+    padding: 5px 20px;
+    color: white;
+    background: #64ca8d;
+    border-radius: 10px;
+    position: relative
+}
+
+.stringMessage {
+    color: red;
+    font-size: 20px;
+    text-align: center;
+}

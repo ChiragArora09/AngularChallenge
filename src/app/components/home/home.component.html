@@ -1,0 +1,29 @@
+<div class="nav-div">
+    <h2 class="heading">All Products</h2>
+    <button class="add-product-button" routerLink="/product/add" >Add Products</button>
+  </div>
+
+  <p class="stringMessage" *ngIf="stringMsg.length>1">{{stringMsg}}</p>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">TITLE</th>
+        <th scope="col">CATEGORY</th>
+        <th scope="col">DESCRIPTION</th>
+        <th scope="col">PRICE</th>
+        <th scope="col">QUANTITY</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td>{{product.title}}</td>
+        <td>{{product.category}}</td>
+        <td>{{product.description}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.quantity}}</td>
+        <td><button class="edit-button" [routerLink]="['/product/edit', product.id]">Edit</button></td>
+        <td><button class="delete-button" (click)="onDelete(product.id)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
