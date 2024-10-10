@@ -58,3 +58,33 @@
     font-size: 20px;
     text-align: center;
 }
+
+.td-buttons{
+    width:100px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap:20px;
+}
+
+.selected-product {
+    width: 300px;
+    height: 200px;
+    box-shadow: 3px 1px 20px -1px rgba(0,0,0,0.78);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    left: 40%;
+    border-radius: 10px;
+    gap: 10px;
+}
+
+.selected-close-button {
+    border: none;
+    padding: 5px 20px;
+    color: white;
+    background: #ff0000;
+    border-radius: 10px;
+}

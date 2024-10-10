@@ -1,4 +1,4 @@
-import { NgFor, NgIf } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ProductService } from '../../service/product.service';
@@ -6,47 +6,32 @@ import { ProductService } from '../../service/product.service';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgFor, RouterLink, NgIf],
+  imports: [NgFor, RouterLink, NgIf, NgClass],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
   products: any[] = []
   stringMsg: string = ""
-  viewProduct: boolean = false
+  viewProductDiv: boolean = false
   totalPages : number =0;  
   numArry:number[]=[];
   counter: number=0;
-  page:number =0;
-  size:number = 3; 
+  page:number=0;
+  size:number=5; 
   last: boolean=false; 
   first: boolean=true;
 
+  selectedProduct: any
+
   constructor(private productService: ProductService){
     this.fetchData()
-    console.log(this.numArry)
   }
-
-  // ngOnInit(){
-  //   this.productService.getAll()
-  //   .subscribe({
-  //     next: (data) => {
-  //       console.log(data)
-  //       this.products=data
-  //     },
-  //     error: (err) => {console.log(err)}
-  //   })
-  // }
 
   fetchData() {
     this.productService.getAll(this.page, this.size).subscribe({
       next: (data) => {
-        console.log(data)
-        console.log(this.page)
-        console.log(this.size)
-
-        this.products=data
-
+        this.products=data.content
         this.totalPages = data.totalPages; 
         this.last = data.last; 
         this.first = data.first; 
@@ -54,8 +39,8 @@ export class HomeComponent {
         if(this.counter === 0){
          let i=0;
          while(i<this.totalPages){
-             this.numArry.push(i); //0 1 
-             i++; //1 2
+             this.numArry.push(i);
+             i++;
            };
          }
        this.counter = this.counter+1;
@@ -82,7 +67,6 @@ export class HomeComponent {
   }
 
   onPageNumberClick(n:number){
-
     this.page = n; 
     this.fetchData();
    }
@@ -90,7 +74,6 @@ export class HomeComponent {
    onNext(){
     this.page = this.page + 1; 
     this.fetchData();
-
    }
 
    onPrev(){
@@ -98,4 +81,8 @@ export class HomeComponent {
     this.fetchData();
    }
 
+   viewProduct(viewProduct:any){
+    this.viewProductDiv=true
+    this.selectedProduct = viewProduct
+   }
 }

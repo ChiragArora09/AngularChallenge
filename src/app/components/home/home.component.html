@@ -10,7 +10,6 @@
       <tr>
         <th scope="col">TITLE</th>
         <th scope="col">CATEGORY</th>
-        <th scope="col">DESCRIPTION</th>
         <th scope="col">PRICE</th>
         <th scope="col">QUANTITY</th>
       </tr>
@@ -19,11 +18,36 @@
       <tr *ngFor="let product of products">
         <td>{{product.title}}</td>
         <td>{{product.category}}</td>
-        <td>{{product.description}}</td>
         <td>{{product.price}}</td>
         <td>{{product.quantity}}</td>
-        <td><button class="edit-button" [routerLink]="['/product/edit', product.id]">Edit</button></td>
-        <td><button class="delete-button" (click)="onDelete(product.id)">Delete</button></td>
+        <td class="td-buttons">
+          <button class="view-button" (click)="viewProduct(product)">View</button>
+          <button class="edit-button" [routerLink]="['/product/edit', product.id]">Edit</button>
+          <button class="delete-button" (click)="onDelete(product.id)">Delete</button>
+        </td>
       </tr>
     </tbody>
   </table>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item">
+        <button class="page-link"  [disabled]="first == true" (click)="onPrev()"> Prev</button>
+      </li>
+      <span *ngFor="let n of numArry">
+        <button class="page-link"   (click)="onPageNumberClick(n)"> {{n+1}}</button>
+      </span>
+      <li class="page-item">
+        <button class="page-link"  [disabled]="last == true" (click)="onNext()"> Next</button>
+      </li>
+    </ul>
+  </nav>
+  <div *ngIf="viewProductDiv==true" class="selected-product">
+    <div>
+      <div class="selected-product-title">{{selectedProduct.title}}</div>
+      <div class="selected-product-category">{{selectedProduct.category}}</div>
+      <div class="selected-product-price">{{selectedProduct.price}}</div>
+      <div class="selected-product-quantity">{{selectedProduct.quantity}}</div>
+      <div class="selected-product-description">{{selectedProduct.description}}</div>
+    </div>
+    <button class="selected-close-button" (click)="viewProductDiv=false">Close</button>
+  </div>

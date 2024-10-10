@@ -10,7 +10,7 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   getAll(page: number, size: number) : Observable<any> {
-    return this.http.get("http://localhost:8082/product/all?page="+page+"&size="+size);
+    return this.http.get(`http://localhost:8082/product/all?page=${page}&size=${size}`);
   }
 
   addProduct(product: any) : Observable<any> {
